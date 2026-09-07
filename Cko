@@ -1,0 +1,66 @@
+-- Coolkid Local Theme Script
+-- ใช้ได้กับ executor ส่วนใหญ่ (Local เท่านั้น)
+
+local Players = game:GetService("Players")
+local Lighting = game:GetService("Lighting")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- สร้าง GUI
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "CoolkidGui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = playerGui
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 280, 0, 160)
+frame.Position = UDim2.new(0.5, -140, 0.2, 0)
+frame.BackgroundColor3 = Color3.fromRGB(20, 0, 0)
+frame.BorderSizePixel = 0
+frame.Parent = screenGui
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 40)
+title.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
+title.Text = "TEAM C00LKIDD"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 20
+title.Parent = frame
+
+local msg = Instance.new("TextLabel")
+msg.Size = UDim2.new(1, -20, 0, 50)
+msg.Position = UDim2.new(0, 10, 0, 50)
+msg.BackgroundTransparency = 1
+msg.Text = "join team c00lkidd today!!"
+msg.TextColor3 = Color3.fromRGB(255, 80, 80)
+msg.Font = Enum.Font.Gotham
+msg.TextSize = 16
+msg.TextWrapped = true
+msg.Parent = frame
+
+local btn = Instance.new("TextButton")
+btn.Size = UDim2.new(0.8, 0, 0, 35)
+btn.Position = UDim2.new(0.1, 0, 0, 110)
+btn.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
+btn.Text = "ACTIVATE"
+btn.TextColor3 = Color3.new(1, 1, 1)
+btn.Font = Enum.Font.GothamBold
+btn.TextSize = 16
+btn.Parent = frame
+
+-- ตอนกดปุ่ม
+btn.MouseButton1Click:Connect(function()
+	-- เปลี่ยนฟ้าเป็นแดง
+	Lighting.Ambient = Color3.fromRGB(80, 0, 0)
+	Lighting.OutdoorAmbient = Color3.fromRGB(60, 0, 0)
+	Lighting.FogColor = Color3.fromRGB(40, 0, 0)
+	Lighting.FogEnd = 200
+
+	-- ข้อความลอย
+	local tip = Instance.new("Message")
+	tip.Text = "TEAM C00LKIDD JOIN TODAY!!"
+	tip.Parent = workspace
+	task.wait(3)
+	tip:Destroy()
+end)
